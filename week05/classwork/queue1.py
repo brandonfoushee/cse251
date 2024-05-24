@@ -20,6 +20,19 @@ class NonBlockingQueue():
         #     raise Exception("You are trying to pop an item from your queue, but your queue is empty!\nYou must use a semaphore.acquire to block to prevent this from happening. Call semaphore.release after you put a spaceship on the queue, this will unblock the semaphore.acquire.")
         return self.items.pop(0)
 
+def write(q: NonBlockingQueue, sem_empty: threading.Semaphore, sem_full: threading.Semaphore):
+    for i in range(10):
+        print(f'{threading.current_thread().name}: calling acquire\n', end="")
+        sem_full.acquire()
+        print(f'{threading.current_thread().name}: called acquire\n', end="")
+        print(f'Putting {i} to queue\n', end="")
+        q.put(i)
+        sem_empty.release()
+
+    # send the Sentinel
+    q.put(None)
+    sem_empty.release()
+
 
 def read(q: NonBlockingQueue, sem_empty: threading.Semaphore, sem_full: threading.Semaphore):
     while True:
@@ -33,19 +46,6 @@ def read(q: NonBlockingQueue, sem_empty: threading.Semaphore, sem_full: threadin
             break
         sem_full.release()
 
-
-def write(q: NonBlockingQueue, sem_empty: threading.Semaphore, sem_full: threading.Semaphore):
-    for i in range(10):
-        print(f'{threading.current_thread().name}: calling acquire\n', end="")
-        sem_full.acquire()
-        print(f'{threading.current_thread().name}: called acquire\n', end="")
-        print(f'Putting {i} to queue\n', end="")
-        q.put(i)
-        sem_empty.release()
-
-    # send the Sentinel
-    q.put(None)
-    sem_empty.release()
 
 
 def main():
