@@ -75,7 +75,7 @@ class NonBlockingQueue():
 
     def put(self, item):
         self.items.append(item)
-        if (len(self.items) >= MAX_QUEUE_SIZE):
+        if (len(self.items) > MAX_QUEUE_SIZE):
             raise Exception("You have exceeded the size of your space queue!!!\nYou have broken the law and the Solar System Space Force are coming for you...!!!\nYou need to use semaphore.acquire to block when the queue is full, and call semaphore.release after removing a spaceship from the queue.")
 
     """Will throw an error if called when there are no items (list is empty)"""
