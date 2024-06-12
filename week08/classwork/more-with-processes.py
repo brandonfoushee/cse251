@@ -18,6 +18,7 @@ import multiprocessing as mp
 import threading
 import time
 
+
 def is_prime(n: int) -> bool:
     """Primality test using 6k+-1 optimization.
     From: https://en.wikipedia.org/wiki/Primality_test
@@ -33,9 +34,24 @@ def is_prime(n: int) -> bool:
         i += 6
     return True
 
-# TODO create read_thread function
+def read_thread(q: mp.Queue, filename):
+    with open(filename) as f:
+        for line in f:
+            q.put(int(line.strip()))
+    q.put(None)
 
-# TODO create prime_process function
+def prime_process(q: mp.Queue, primes):
+    while True:
+        num = q.get()
+        
+        if num == None:
+            q.put(None)
+            break
+        if is_prime(num):
+            primes.append(num)
+            #print(f'{num=}')
+        
+
 
 def main():
     """ Main function """
@@ -44,19 +60,29 @@ def main():
 
     # Start a timer
     begin_time = time.perf_counter()
-    
+
     # Get number of processes to create based on cpu count
-    cpu_count = mp.cpu_count()
+    cpu_count = mp.cpu_count() * 2
 
-    # TODO Create shared data structures
+    # Create shared data structures
+    q = mp.Manager().Queue()
+    primes = mp.Manager().list()
 
-    # TODO create reading thread
+    # create reading thread
+    reader_t = threading.Thread(target=read_thread, args=(q, filename))
+    reader_t.start()
 
-    # TODO create prime processes
+    # create prime processes
+    processes = []
+    for _ in range(cpu_count):
+        p = mp.Process(target=prime_process, args=(q, primes))
+        p.start()
+        processes.append(p)
 
-    # TODO Start them all
-
-    # TODO wait for them to complete
+    # wait for them to complete
+    reader_t.join()
+    for p in processes:
+        p.join()
 
     total_time = "{:.2f}".format(time.perf_counter() - begin_time)
     print(f'Total time = {total_time} sec')
@@ -67,4 +93,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
