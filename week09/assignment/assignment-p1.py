@@ -9,6 +9,7 @@ from screen import Screen
 from maze import Maze
 import cv2
 import sys
+from cse251functions import *
 
 SCREEN_SIZE = 800
 COLOR = (0, 0, 255)
@@ -59,7 +60,8 @@ def get_solution_path(filename):
 
 
 def find_paths():
-    files = ('verysmall.bmp', 'verysmall-loops.bmp',
+    files = ('verysmall.bmp'
+             'verysmall-loops.bmp',
              'small.bmp', 'small-loops.bmp',
              'small-odd.bmp', 'small-open.bmp', 'large.bmp', 'large-loops.bmp')
 
@@ -81,3 +83,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    create_signature_file()

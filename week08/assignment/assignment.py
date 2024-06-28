@@ -32,6 +32,7 @@ import multiprocessing as mp
 import os
 import random
 import time
+from cse251functions import *
 
 CONTROL_FILENAME = 'settings.txt'
 BOXES_FILENAME = 'boxes.txt'
@@ -229,3 +230,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    create_signature_file()
