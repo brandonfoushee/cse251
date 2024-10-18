@@ -139,7 +139,7 @@ def main():
 
     # This tracks the size of the queue at the time a spaceship
     # is removed from the queue by the buyer (do it after calling get()).
-    # queue_stats[queue.size()] += 1
+    # buyer_stats[queue.size()] += 1
     buyer_stats = [0] * MAX_QUEUE_SIZE
 
     # TODO create your one spaceship factory
