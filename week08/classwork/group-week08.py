@@ -33,9 +33,26 @@ def is_prime(n: int) -> bool:
         i += 6
     return True
 
-# TODO create read_thread function
+# create read_thread function
+def reader(filename, data_queue: mp.Queue):
+    with open(filename) as f:
+        for line in f:
+            data_queue.put(int(line.strip()))
+    print('all done adding number to queue')
+    data_queue.put(None)
 
-# TODO create prime_process function
+
+# create prime_process function
+def check_primes(q: mp.Queue, primes):
+    while True:
+        number = q.get()
+        if number is None:
+            q.put(None)
+            print('all done')
+            break
+        if is_prime(number):
+            print(f'{number} is prime')
+            primes.append(number)
 
 def main():
     """ Main function """
@@ -48,15 +65,25 @@ def main():
     # Get number of processes to create based on cpu count
     cpu_count = mp.cpu_count()
 
-    # TODO Create shared data structures
+    # Create shared data structures
+    queue_mp = mp.Manager().Queue()
+    primes = mp.Manager().list()
 
-    # TODO create reading thread
+    # create reading thread
+    reader_t = threading.Thread(target=reader, args=(filename, queue_mp))
+    reader_t.start()
+    
+    # create prime processes
+    processes = []
+    for _ in range(cpu_count + 1):
+        p = mp.Process(target=check_primes, args=(queue_mp, primes))
+        p.start()
+        processes.append(p)
 
-    # TODO create prime processes
-
-    # TODO Start them all
-
-    # TODO wait for them to complete
+    # wait for them to complete
+    reader_t.join()
+    for p in processes:
+        p.join()
 
     total_time = "{:.2f}".format(time.perf_counter() - begin_time)
     print(f'Total time = {total_time} sec')
