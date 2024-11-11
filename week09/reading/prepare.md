@@ -16,7 +16,7 @@
 
 ## User and Kernel Threads
 
-[Wikipedia Threads](https://en.wikipedia.org/wiki/Thread_\(computing\))
+[Wikipedia Threads](https://en.wikipedia.org/wiki/Thread_(computing))
 
 (The following section was taken from https://www.tutorialspoint.com/operating_system/os_multi_threading.htm)
 
@@ -122,7 +122,7 @@ Review these links if you need to understand recursion more or need to refresh y
 - [Video on Recursion](https://www.youtube.com/watch?v=ngCos392W4w)
 - [What on Earth is Recursion? - Computerphile](https://www.youtube.com/watch?v=Mv9NEXX1VHc)
 
-- [Examples of Recursion in Python](https://vegibit.com/python-recursion-examples/) -> Good way to get better at understanding recursion is to write these program examples. 
+- [Examples of Recursion in Python](https://www.codecademy.com/learn/learn-recursion-python/modules/recursion-python/cheatsheet) -> Good way to get better at understanding recursion is to write these program examples. 
 
 # Analyzing Programs
 
