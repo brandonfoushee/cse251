@@ -2,7 +2,6 @@ import random
 import string
 import sys
 import time
-import threading
 
 # You might need to add this module by running (in a terminal): py -m pip install termcolor
 from termcolor import colored
@@ -12,7 +11,7 @@ from termcolor import colored
 # Definitions:
 # - A neighborhood is a two-dimensional array (2 x 2 grid) of integers. The size of neighborhood
 #   is defined by the global SIZE variable.
-# - An even value is a street, an odd value is a house (pathway through the neighborhood).
+# - An even value is a house, an odd value is a street (pathway through the neighborhood).
 # - A house is a particular location in the neighborhood, so a coordinate (row, col).
 # - Your house will always be in the last row at a random column (with a value of -2).
 
@@ -31,6 +30,8 @@ from termcolor import colored
 SIZE = 15
 
 # Proven algorithm (so modify at your own discretion/peril)
+
+
 def get_even_paths(row: int, col: int, neighborhood):
     even_paths = []
     # Move to the right, -1 indicates out of bounds
@@ -54,18 +55,11 @@ def get_even_paths(row: int, col: int, neighborhood):
 # Make this function work
 def find_house_recursively(neighborhood: list[list[int]], row: int, col: int, solution_path: list, complete_path: list):
 
-    # Determine if we have already checked this row and col,
-    # if it is, then we can just return since we have already checked this row and col
-    if (row, col) in complete_path:
-        return False
+    # Determine if we have already checked this row and col
 
     # append house (row, col) to complete_path
-    complete_path.append((row, col))
 
     # Check if this house is your house
-    if neighborhood[row][col] == -2:
-        print('found my house')
-        return True
 
     # Create list to store any path that contains an even value
     even_paths = get_even_paths(row, col, neighborhood)
@@ -75,19 +69,18 @@ def find_house_recursively(neighborhood: list[list[int]], row: int, col: int, so
 
         # Add to path before checking if r and c are on the solution path since
         # if we find the house, we will return out of function
-        solution_path.append((r, c))
 
         # If this r and c are the house, then exit by returning
-        t = threading.Thread(target=find_house_recursively, args=(neighborhood, r, c, solution_path, complete_path))
-        t.start()
-        if find_house_recursively(neighborhood, r, c, solution_path, complete_path):
-            return True
 
         # Since we returned False from recursive call, we know we didn't find the house
         # so can remove the r and c from the solution path
-        solution_path.remove((r, c))
+
+        # remove this, just here to prevent compiler from complaining
+        pass
 
 # working print function
+
+
 def printNeighborhood(neighborhood, path=None):
 
     for row in range(SIZE):
@@ -117,7 +110,7 @@ def find_house():
             neighborhood[row][col] = (row * 2) // col
 
     # -2 is your house (bottom row, random column)
-    neighborhood[SIZE - 1][random.choice([0, 1, 4, 6, 7, 8, 9])] = -2
+    neighborhood[SIZE - 1][random.choice([0, 1, 4, 5, 6, 7, 8, 9])] = -2
 
     # printNeighborhood(neighborhood)
 
@@ -131,9 +124,7 @@ def find_house():
 
     # add the beginning house to the solution_path (upper left corner)
     solution_path.append((0, 0))
-    row = 0
-    col = 0
-    find_house_recursively(neighborhood, row, col, solution_path, complete_path)
+    find_house_recursively(neighborhood, 0, 0, solution_path, complete_path)
 
     print(f'{solution_path=}')
 
