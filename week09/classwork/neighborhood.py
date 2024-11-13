@@ -11,7 +11,7 @@ from termcolor import colored
 # Definitions:
 # - A neighborhood is a two-dimensional array (2 x 2 grid) of integers. The size of neighborhood
 #   is defined by the global SIZE variable.
-# - An even value is a house, an odd value is a street (pathway through the neighborhood).
+# - An even value is a street, an odd value is a house.
 # - A house is a particular location in the neighborhood, so a coordinate (row, col).
 # - Your house will always be in the last row at a random column (with a value of -2).
 
