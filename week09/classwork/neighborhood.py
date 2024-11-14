@@ -79,8 +79,6 @@ def find_house_recursively(neighborhood: list[list[int]], row: int, col: int, so
         pass
 
 # working print function
-
-
 def printNeighborhood(neighborhood, path=None):
 
     for row in range(SIZE):
@@ -110,7 +108,7 @@ def find_house():
             neighborhood[row][col] = (row * 2) // col
 
     # -2 is your house (bottom row, random column)
-    neighborhood[SIZE - 1][random.choice([0, 1, 4, 5, 6, 7, 8, 9])] = -2
+    neighborhood[SIZE - 1][random.choice([0, 1, 4, 6, 7, 8, 9])] = -2
 
     # printNeighborhood(neighborhood)
 
