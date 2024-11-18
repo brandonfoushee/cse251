@@ -56,10 +56,15 @@ def get_even_paths(row: int, col: int, neighborhood):
 def find_house_recursively(neighborhood: list[list[int]], row: int, col: int, solution_path: list, complete_path: list):
 
     # Determine if we have already checked this row and col
+    if (row, col) in complete_path:
+        return False
 
     # append house (row, col) to complete_path
+    complete_path.append((row, col))
 
     # Check if this house is your house
+    if neighborhood[row][col] == -2:
+        return True
 
     # Create list to store any path that contains an even value
     even_paths = get_even_paths(row, col, neighborhood)
@@ -69,14 +74,15 @@ def find_house_recursively(neighborhood: list[list[int]], row: int, col: int, so
 
         # Add to path before checking if r and c are on the solution path since
         # if we find the house, we will return out of function
+        solution_path.append((r, c))
 
-        # If this r and c are the house, then exit by returning
+        # If this r and c are the house, then exit by returning True
+        if find_house_recursively(neighborhood, r, c, solution_path, complete_path):
+            return True
 
         # Since we returned False from recursive call, we know we didn't find the house
         # so can remove the r and c from the solution path
-
-        # remove this, just here to prevent compiler from complaining
-        pass
+        solution_path.remove((r, c))
 
 # working print function
 def printNeighborhood(neighborhood, path=None):
