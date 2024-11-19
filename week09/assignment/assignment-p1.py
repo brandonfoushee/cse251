@@ -60,7 +60,7 @@ def get_solution_path(filename):
 
 
 def find_paths():
-    files = ('verysmall.bmp'
+    files = ('verysmall.bmp',
              'verysmall-loops.bmp',
              'small.bmp', 'small-loops.bmp',
              'small-odd.bmp', 'small-open.bmp', 'large.bmp', 'large-loops.bmp')

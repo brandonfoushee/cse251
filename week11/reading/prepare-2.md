@@ -1,6 +1,6 @@
 ![](../../banner.png)
 
-# 10-2 Prepare: Pickling, Conditions and Python Packages
+# 11-2 Prepare: Pickling, Conditions and Python Packages
 
 <ins>Key Concepts in this week's reading:</ins>
 1. Understand what `pickling` (serialization) is and why it is used in software programming.
