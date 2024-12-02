@@ -41,7 +41,7 @@ def main():
     #     print(f'product {answer=}')
         
     for x in range(3, 6):
-        pool_1.apply_async(sum_all_values, args=(x,), callback=get_sum_cb)
+        pool_1.apply_async(func=sum_all_values, args=(x,), callback=get_sum_cb)
     
     pool_1.close()
     pool_1.join()
