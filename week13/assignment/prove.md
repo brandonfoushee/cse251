@@ -94,5 +94,5 @@ Assignments are individual and not team based.  Any assignments found to be plag
 
 ## Submission
 
-When finished, upload your assignment.py Python and signature files to Canvas (no zip files).
+When finished, upload your functions.py Python, and assignment.log, and signature files to Canvas (no zip files).
 
