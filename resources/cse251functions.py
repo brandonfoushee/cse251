@@ -37,7 +37,7 @@ def printError(errStr):
     exit()
 
 
-def create_signature_file():
+def create_signature_file(semester):
     if SIS_ID == None or SIS_ID == '012345678':
         printError("Enter your SIS_ID in the resources/student_info.py file")
 
@@ -45,7 +45,7 @@ def create_signature_file():
         printError("Enter your first and last name in the resources/student_info.py file")
 
     width = 725
-    height = 400
+    height = 450
 
     char_count = 0
     word_count = 0
@@ -76,6 +76,7 @@ def create_signature_file():
         
     text = f"Filename={assignment_full_path} \
             \nDATEIME={datetime.now()} \
+            \nSEMESTER={semester} \
             \nUUID={uuid.uuid4()} \
             \nNODE={uuid.getnode()} \
             \nLOGIN={os.getlogin()} \

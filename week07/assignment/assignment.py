@@ -101,4 +101,4 @@ if __name__ == '__main__':
     plt.savefig(f'Plot for {FRAME_COUNT} frames.png')
     plt.show()
     
-    create_signature_file()
+    create_signature_file("CSE251W25")

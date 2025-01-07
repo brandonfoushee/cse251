@@ -150,4 +150,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    create_signature_file()
+    create_signature_file("CSE251W25")
