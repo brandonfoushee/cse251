@@ -3,7 +3,7 @@
     "--disable=missing-module-docstring",
     "--disable=missing-class-docstring",
     "--disable=missing-function-docstring",
-    "--disable=trailing-whitespace"
+    "--disable=trailing-whitespace",
     ],
     "python.envFile": "${workspaceFolder}/.env"
 }
