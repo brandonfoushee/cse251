@@ -27,16 +27,16 @@ PRODUCT = 0
 def main():
 
     # Test your thread/function first with 5 (so 1 x 2 x 3 x 4 = 24) (replace this line with your own comment)
-    #assert PRODUCT == 24, f'The product should equal 45 but instead was {
-    #    PRODUCT}'
+    assert PRODUCT == 24, f'The product should equal 45 but instead was {
+        PRODUCT}'
 
     # Then with 10 (replace this line with your own comment)
-    #assert PRODUCT == 362880, f'The product should equal 362880 but instead was {
-    #    PRODUCT}'
+    assert PRODUCT == 362880, f'The product should equal 362880 but instead was {
+        PRODUCT}'
 
     # Then with 15 (replace this line with your own comment)
-    #assert PRODUCT == 87178291200, f'The product should equal 87178291200 but instead was {
-    #    PRODUCT}'
+    assert PRODUCT == 87178291200, f'The product should equal 87178291200 but instead was {
+        PRODUCT}'
     pass # delete this line
 
 if __name__ == '__main__':

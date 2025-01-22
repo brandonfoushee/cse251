@@ -4,31 +4,42 @@ import random
 
 SUM = 0
 
-
 def add_two_numbers(n1, n2, results: list):
-    #global SUM
-    sum = n1 + n2
+    global SUM
+    sum1 = n1 + n2
     #print(f'{sum=}\n', end="")
     #time.sleep(3)
     #print('all done\n', end="")
-    #SUM = sum
+    SUM = sum1
+    if n1 == 1:
+        x = 10
+    
+    #print(f'{x + 1}')
     time.sleep(random.uniform(0.1, 0.2))
-    results.append(sum)
+    results.append(sum1)
+
+results = []
+add_two_numbers(1, 2, results)
 
 
-class Sum_Thread(threading.Thread):
-    def __init__(self, n1: int, n2: int):
-        threading.Thread.__init__(self)
-        self.n1 = n1
-        self.n2 = n2
-        self.sum = 0
+#print(f'{sum1=}')
 
-    def run(self):
-        time.sleep(3)
-        self.sum = self.n1 + self.n2
+# def my_func(x):
+#     print(x)
 
 
-# t1 = threading.Thread(target=add_two_numbers, args=(1, 2))
+# class Sum_Thread(threading.Thread):
+#     def __init__(self, n1: int, n2: int):
+#         threading.Thread.__init__(self)
+#         self.n1 = n1
+#         self.n2 = n2
+#         self.sum = 0
+
+#     def run(self):
+#         time.sleep(3)
+#         self.sum = self.n1 + self.n2
+
+# t1 = threading.Thread(target=my_func, args=(1,))
 # t1.start()
 # print(f'I have started my thread')
 # print(f'{SUM=}')
@@ -56,13 +67,13 @@ threads = []
 
 # print(f'{results=}')
 
-threads = []
-for i in range(100):
-    t = threading.Thread(target=add_two_numbers, args=(i, i + 1, results))
-    t.start()
-    threads.append(t)
+# threads = []
+# for i in range(100):
+#     t = threading.Thread(target=add_two_numbers, args=(i, i + 1, results))
+#     t.start()
+#     threads.append(t)
 
-for t in threads:
-    t.join()
+# for t in threads:
+#     t.join()
 
-print(f'{results=}')
+# print(f'{results=}')
