@@ -14,7 +14,7 @@ The python server in this assignment contains details of all of the Star Wars fi
 **Coding Instructions**
 
 - Each API call must only retrieve one piece of information
-- Run the server.py program from a terminal/console program.  Simply type `python server.py`.  Note that you need the `data.txt` in the same folder as `server.py` in order for the server to work. 
+- Run the server.py program from a terminal/console program.  Simply type `py server.py` (on a Mac you would type python3 server.py).  Note that you need the `data.txt` in the same folder as `server.py` in order for the server to work. 
 - The only **fixed** or hard coded URL that you can use is TOP_API_URL.  Use this URL to retrieve other URLs that you can use to retrieve information from the server.
 - You need to match the output outlined in the description of the assignment.
 - You are required to use a threaded class (inherited from threading.Thread) for this assignment.  This object will make the API calls to the server. You can define your class within this Python file (ie., no need to have a separate file for the class).

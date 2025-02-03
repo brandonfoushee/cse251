@@ -33,18 +33,16 @@ CALL_COUNT = 0
 #TODO create a thread class that uses the 'requests' module
 #     to call the server using an URL.
 
-
+def display_names(title, name_list):
+    print('')
+    print(f'{title}: {len(name_list)}')
+    names = sorted([item["name"] for item in name_list])
+    print(str(names)[1:-1].replace("'", ""))
+        
 def print_film_details(film, chars, planets, starships, vehicles, species):
     '''
     Print out the film details in a formatted way
     '''
-    
-    def display_names(title, name_list):
-        print('')
-        print(f'{title}: {len(name_list)}')
-        names = sorted([item["name"] for item in name_list])
-        print(str(names)[1:-1].replace("'", ""))
-
     print('-' * 40)
     print(f'Title   : {film["title"]}')
     print(f'Director: {film["director"]}')
