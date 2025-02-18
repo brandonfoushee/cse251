@@ -52,7 +52,7 @@ This only works if VS Code knows the object type.
 
 Python is a dynamically typed language [statically vs dynamically typed languages](https://stackoverflow.com/questions/1517582/what-is-the-difference-between-statically-typed-and-dynamically-typed-languages). While this can make the syntax easier when writing your code, there is a trade-off since you don't always know what functions or attributes you have available to you. Also, trivial compile errors are not always caught when writing your code and you need to run your code to discover these errors.
 
-While you don't need to specify the type of an object, knowing the type is essential when writing your code. One very useful thing you can use in Python is called [type hinting](https://realpython.com/lessons/type-hinting/).
+While you don't need to specify the type of an object, knowing the type is essential when writing your code. One very useful thing you can use in Python is called [type hinting](https://realpython.com/lessons/type-hinting).
 
 ```
 class MyClass:
