@@ -4,7 +4,7 @@
 
 ## Overview
 
-You will be finishing the coding of the video we did in class on Monday. If you missed class, you will need to watch the recording to obtain the code. Then you will be modifying it to run using a range of processes and plotting the results.
+You will be finishing the coding of the video we did in class on Wednesday. If you missed class, you will need to watch the recording to obtain the code. Then you will be modifying it to run using a range of processes and plotting the results.
 
 Download the [assignment.py](assignment.py) file and read the requirements.
 
