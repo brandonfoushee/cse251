@@ -18,11 +18,15 @@ class MyProcess(mp.Process):
     def run(self):
         print(f'{self.x + self.x}')
 
+def anotherFunction(i1, i2, i3):
+    return i1 + i2 + i3
+
 def square(n :int):
-    n **= 2
+    #n **= 2
     #print(f'{mp.current_process().name}: {n=}')
     #time.sleep(1)
-    return n
+    result = anotherFunction(n, n + 1, n + 2)
+    return result
 
 def main():
     # p1 = mp.Process(target=sum, args=(10, ))
@@ -39,17 +43,17 @@ def main():
     inputs = list(range(100))
     outputs = []
     
-    # with mp.Pool(mp.cpu_count()) as p:
-    #     outputs = p.map(square, inputs)
+    with mp.Pool(mp.cpu_count()) as p:
+        outputs = p.map(square, inputs)
     p = mp.Pool(4)
     
     #outputs = p.map(square, inputs)
     #print(f'1: {outputs=}')
     
-    outputs = p.map_async(sum, inputs)
-    print(f'{outputs.get()}')
-    p.close()
-    p.join()
+    #outputs = p.map_async(sum, inputs)
+    #print(f'{outputs.get()}')
+    #p.close()
+    #p.join()
 
     #print(f'{outputs=}')
     #print(f'in main, MY_SUM={MY_SUM}')
