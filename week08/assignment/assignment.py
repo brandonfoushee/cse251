@@ -161,7 +161,7 @@ class Wrapper(mp.Process):
         while there are gifts to process
             save gift to the file with the current time
             sleep the required amount
-        (see prepare00.md for helpful file operations)
+        (see week01/reading/prepare.md for helpful file operations)
         '''
 
 
